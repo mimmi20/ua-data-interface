@@ -1,0 +1,43 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+# file-version: 1.0
+
+name: "Cleanup caches by a branch"
+
+on:
+  pull_request:
+    types:
+      - "closed"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cleanup:
+    name: "Cleanup Caches"
+    uses: "mimmi20/ci/.github/workflows/cleanup-cache.yml@8.4"
+    with:
+      repository: ${{ github.repository }}
+      ref: ${{ github.ref }}
+
+  # This is a meta job to avoid to have to constantly change the protection rules
+  # whenever we touch the matrix.
+  cleanup-status:
+    name: "Cleanup Status"
+
+    runs-on: "ubuntu-latest"
+
+    if: always()
+
+    needs:
+      - "cleanup"
+
+    steps:
+      - name: Successful run
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+
+      - name: Failing run
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1

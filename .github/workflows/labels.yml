@@ -1,0 +1,46 @@
+# https://help.github.com/en/categories/automating-your-workflow-with-github-actions
+
+# file-version: 1.0
+
+name: "Sync labels in the declarative way"
+
+on:
+  push:
+    branches:
+      - "master"
+    paths:
+      - ".github/labels.yml"
+      - ".github/workflows/labels.yml"
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  build:
+    name: "Sync labels"
+    uses: "mimmi20/ci/.github/workflows/sync-labels.yml@8.4"
+    with:
+      repository: ${{ github.repository }}
+      manifest: ".github/labels.yml"
+
+  # This is a meta job to avoid to have to constantly change the protection rules
+  # whenever we touch the matrix.
+  label-status:
+    name: "Sync Label Status"
+
+    runs-on: "ubuntu-latest"
+
+    if: always()
+
+    needs:
+      - "build"
+
+    steps:
+      - name: Successful run
+        if: ${{ !(contains(needs.*.result, 'failure')) }}
+        run: exit 0
+
+      - name: Failing run
+        if: ${{ contains(needs.*.result, 'failure') }}
+        run: exit 1
