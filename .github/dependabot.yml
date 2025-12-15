@@ -11,7 +11,7 @@ updates:
 
     schedule:
       interval: "cron"
-      cronjob: "0 4 24 * *"
+      cronjob: "0 4 3 * *"
       timezone: "Europe/Berlin"
 
     cooldown:
@@ -44,7 +44,7 @@ updates:
 
     schedule:
       interval: "cron"
-      cronjob: "0 4 24 * *"
+      cronjob: "0 4 3 * *"
       timezone: "Europe/Berlin"
 
     cooldown:

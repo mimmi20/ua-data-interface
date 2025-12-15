@@ -1,6 +1,6 @@
 {
-  "name": "mimmi20/template",
-  "description": "Provides a GitHub repository template for a PHP library, using GitHub actions.",
+  "name": "mimmi20/ua-data-interface",
+  "description": "Provides a GitHub repository ua-data-interface for a PHP library, using GitHub actions.",
   "license": "MIT",
   "type": "library",
   "authors": [
@@ -11,13 +11,13 @@
     },
     {
       "name": "Contributors",
-      "homepage": "https://github.com/mimmi20/template/graphs/contributors"
+      "homepage": "https://github.com/mimmi20/ua-data-interface/graphs/contributors"
     }
   ],
-  "homepage": "https://github.com/mimmi20/template",
+  "homepage": "https://github.com/mimmi20/ua-data-interface",
   "support": {
-    "issues": "https://github.com/mimmi20/template/issues",
-    "source": "https://github.com/mimmi20/template"
+    "issues": "https://github.com/mimmi20/ua-data-interface/issues",
+    "source": "https://github.com/mimmi20/ua-data-interface"
   },
   "require": {
     "php": "~8.4.0 || ~8.5.0",
@@ -31,24 +31,28 @@
     "ext-xml": "*",
     "ext-xmlwriter": "*",
     "infection/infection": "^0.31.9",
-    "mimmi20/coding-standard": "^6.2.5",
+    "jbelien/phpstan-sarif-formatter": "^1.2.0",
+    "mimmi20/coding-standard": "^7.0.7",
     "nikic/php-parser": "^5.6.2",
     "phpstan/extension-installer": "^1.4.3",
     "phpstan/phpstan": "^2.1.32",
     "phpstan/phpstan-deprecation-rules": "^2.0.3",
-    "phpstan/phpstan-phpunit": "^2.0.8",
-    "phpunit/phpunit": "^12.4.3",
     "rector/rector": "^2.2.8",
     "rector/type-perfect": "^2.1.1",
-    "shipmonk/composer-dependency-analyser": "^1.8.3",
+    "shipmonk/composer-dependency-analyser": "^1.8.4",
     "symfony/process": "^7.3.4",
-    "symplify/phpstan-rules": "^14.8.3",
+    "symplify/phpstan-rules": "^14.8.5",
     "tomasvotruba/cognitive-complexity": "^1.0.0",
     "tomasvotruba/type-coverage": "^2.0.2",
     "tomasvotruba/unused-public": "^2.1.1"
   },
   "minimum-stability": "stable",
   "prefer-stable": true,
+  "autoload": {
+    "psr-4": {
+      "UaData\\": "src/"
+    }
+  },
   "config": {
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true,
