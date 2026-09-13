@@ -22,7 +22,7 @@ interface OsInterface
     public function getMarketingName(): string | null;
 
     /** @throws void */
-    public function getManufacturer(): CompanyInterface;
+    public function getManufacturer(): string | null;
 
     /**
      * @return array{factory: class-string|null, search: array<int, string>|null, value?: float|int|string}

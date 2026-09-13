@@ -40,9 +40,9 @@ enum Engine: string implements EngineInterface
 
     /** @throws void */
     #[Override]
-    public function getManufacturer(): CompanyInterface
+    public function getManufacturer(): string | null
     {
-        return Company::unknown;
+        return null;
     }
 
     /**
