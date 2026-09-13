@@ -46,9 +46,9 @@ enum Os: string implements OsInterface
 
     /** @throws void */
     #[Override]
-    public function getManufacturer(): CompanyInterface
+    public function getManufacturer(): string | null
     {
-        return Company::unknown;
+        return null;
     }
 
     /**
